@@ -1,9 +1,10 @@
+## Importing libraries
 import pandas as pd
 import streamlit as st
 import plotly.express as px
 
-# Assuming your data is in a file named 'data.xlsx'
-df = pd.read_excel('New results.xlsx')
+## Loading the dataset
+df = pd.read_excel('New_results.xlsx')
 
 st.markdown("""
     <style>
@@ -27,12 +28,10 @@ material = st.sidebar.selectbox('Select a Material:', df['Material'].unique())
 df_material = df[df['Material'] == material]
 
 # Display material data
-col1, col2 = st.columns(2)
-with col1:
-    st.warning(f"Material: {df_material['Material'].values[0]}")
-    st.header(f"State: {df_material['State'].values[0]}")
-    st.info(f"Economic Importance (EI) = {df_material['EI'].values[0]:.2f}")
-    st.info(f"Supply Risk (SR) = {df_material['SR'].values[0]:.2f}")
+st.warning(f"Material: {df_material['Material'].values[0]}")
+st.header(f"State: {df_material['State'].values[0]}")
+st.info(f"Economic Importance (EI) = {df_material['EI'].values[0]:.2f}")
+st.info(f"Supply Risk (SR) = {df_material['SR'].values[0]:.2f}")
 
 
 
@@ -55,7 +54,7 @@ st.plotly_chart(fig2)
 st.image(logo)
 
 
-# Your code here...
+
 
 # Footer
 st.markdown('---')  # Optional, adds a horizontal line for aesthetics
